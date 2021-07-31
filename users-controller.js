@@ -13,7 +13,7 @@ module.exports = router;
 async function addUser(req, res, next) {
     const {email, name, metadata} = req.body;
     const dbRes = await query(`insert into users (id, email, name, metadata) values
-       (default, $1, $2, $3) returning *`, [email, name, metadata]);
+       (default, $1, $2, $3) returning *`, [email, name, JSON.stringify(metadata)]);
     res.status(200).json(null);
 }
 
