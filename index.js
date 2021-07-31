@@ -8,6 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/users', require('./users-controller'));
+
 app.get('/get-item', (req, res) => {
     const item = getItem(Number(req.query.id));
     console.log(item);
