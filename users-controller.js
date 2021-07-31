@@ -14,9 +14,6 @@ async function addUser(req, res, next) {
     const {email, name, metadata} = req.body;
     const dbRes = await query(`insert into users (id, email, name, metadata) values
        (default, $1, $2, $3) returning *`, [email, name, metadata]);
-    await query(`insert into log (id, email, name, metadata) values
-       (default, $1, $2, $3) returning *`, [email, name, metadata]);
-    console.log(dbRes.rows);
     res.status(200).json(null);
 }
 
