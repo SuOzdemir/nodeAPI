@@ -4,6 +4,7 @@ const {query} = require("./db-utils");
 const router = express.Router();
 
 router.post('/user', addUser);
+router.put('/user', updateUser);
 
 module.exports = router;
 
@@ -12,5 +13,16 @@ async function addUser(req, res, next) {
     const dbRes = await query(`insert into users (id, email, name, metadata) values
        (default, $1, $2, $3) returning *`, [email, name, metadata]);
     console.log(dbRes.rows);
+    res.status(200).json(null);
+}
+
+async function updateUser(req, res, next) {
+    const {id, email, name, metadata} = req.body;
+    const dbRes = await query(`
+        update users set 
+           email = $1,
+           name = $2,
+           metadata = $3
+        where id = $4`, [email, name, metadata, id]);
     res.status(200).json(null);
 }
