@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.post('/user', addUser);
 router.put('/user', updateUser);
+router.get('/users', getUsers);
+router.get('/user', getUser);
 
 module.exports = router;
 
@@ -25,4 +27,14 @@ async function updateUser(req, res, next) {
            metadata = $3
         where id = $4`, [email, name, metadata, id]);
     res.status(200).json(null);
+}
+
+async function getUsers(req, res, next) {
+    const dbRes = await query(`select * from users order by id`, []);
+    res.status(200).json(dbRes.rows);
+}
+
+async function getUser(req, res, next) {
+    const dbRes = await query(`select * from users where id = $1`, [req.query.id]);
+    res.status(200).json(dbRes.rows[0]);
 }

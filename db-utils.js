@@ -1,4 +1,7 @@
 const { Pool, Client } = require('pg');
+const { types } = require('pg');
+
+types.setTypeParser(20, (val) => parseInt(val));
 
 module.exports = {
     query,
