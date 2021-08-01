@@ -1,12 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
+const jwt = require('./_helpers/jwt');
 
 const {sil, getItems, getItem, ekle, guncelle} = require("./in-memory-db");
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(jwt());
+app.use(bodyParser.json());
 
 app.use('/users', require('./users-controller'));
 app.use('/books', require('./books-controller'));
