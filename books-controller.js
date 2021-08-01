@@ -11,6 +11,7 @@ router.get('/book', getBook);
 module.exports = router;
 
 async function addBook(req, res, next) {
+    console.log('addBook', req.body);
     const {bookName, authorName, category} = req.body;
     const dbRes = await query(`insert into books (id, book_name, author_name, category) values
        (default, $1, $2, $3) returning *`, [bookName, authorName, category]);
