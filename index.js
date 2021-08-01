@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/users', require('./users-controller'));
+app.use('/books', require('./books-controller'));
 
 app.get('/get-item', (req, res) => {
     const item = getItem(Number(req.query.id));
