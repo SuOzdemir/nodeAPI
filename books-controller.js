@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post('/book', addBook);
 router.put('/book', updateBook);
+router.delete('/book', deleteBook);
 router.get('/books', getBooks);
 router.get('/book', getBook);
 
@@ -27,6 +28,15 @@ async function updateBook(req, res, next) {
            author_name = $2,
            category = $3
         where id = $4`, [bookName, authorName, category, id]);
+    });
+    res.status(200).json(null);
+}
+
+async function deleteBook(req, res, next) {
+    const { id } = req.query;
+    await transactional(async qt => {
+        const dbRes = await qt(`
+        delete from  books where id = $1`, [id]);
     });
     res.status(200).json(null);
 }
