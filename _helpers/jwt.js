@@ -14,7 +14,8 @@ function jwt() {
             '/users/resetPassword',
             '/users/user',
             '/books/books',
-            '/books/book'
+            '/books/book',
+            '/dene'
 
         ]
     });
