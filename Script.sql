@@ -14,3 +14,5 @@ CREATE TABLE  IF NOT EXISTS  books  (
     category            text 	    NOT NULL,
     CONSTRAINT pk_books PRIMARY KEY (id)
 );
+
+--mongodb+srv://dbUser:<password>@cluster0.uy9m3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
