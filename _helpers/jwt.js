@@ -15,7 +15,7 @@ function jwt() {
             '/users/user',
             '/books/books',
             '/books/book',
-            '/dene'
+            '/mongoDB/dene'
 
         ]
     });

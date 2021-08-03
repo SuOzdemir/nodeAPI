@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/users', require('./users-controller'));
 app.use('/books', require('./books-controller'));
+app.use('/mongoDB',  require('./mongo-dene-controller'));
 
 app.get('/get-item', (req, res) => {
     const item = getItem(Number(req.query.id));
