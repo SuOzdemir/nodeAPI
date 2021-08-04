@@ -8,6 +8,7 @@
     "start:redis": "nodemon redis.js"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^7.13.0",
     "redis": "^3.1.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
